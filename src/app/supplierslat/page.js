@@ -32,7 +32,7 @@ export default function SuppliersLatPage() {
 
   const fetchSuppliers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/suppliers');
+      const res = await axios.get('https://teaapi.mcdi.online/api/suppliers');
       setSuppliers(res.data);
     } catch (err) {
       console.error("Error fetching suppliers list:", err);
@@ -48,7 +48,7 @@ export default function SuppliersLatPage() {
     setLoading(true);
     const today = new Date().toISOString().split('T')[0];
     try {
-      await axios.post('http://localhost:5000/api/suppliers', { name, phone, joined_date: today });
+      await axios.post('https://teaapi.mcdi.online/api/suppliers', { name, phone, joined_date: today });
       setName('');
       setPhone('');
       setSuccess(true);

@@ -14,7 +14,7 @@ export default function Dashboard() {
 
   const fetchDashboardStats = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/dashboard/summary');
+      const res = await axios.get('https://teaapi.mcdi.online/api/dashboard/summary');
       setStats(res.data);
     } catch (err) {
       console.error("Error loading dashboard stats:", err);

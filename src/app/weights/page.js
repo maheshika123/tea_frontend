@@ -48,10 +48,10 @@ export default function Weights() {
 
   const fetchData = async () => {
     try {
-      const supRes = await axios.get('http://localhost:5000/api/suppliers');
+      const supRes = await axios.get('https://teaapi.mcdi.online/api/suppliers');
       setSuppliers(supRes.data);
       
-      const weightRes = await axios.get('http://localhost:5000/api/weights');
+      const weightRes = await axios.get('https://teaapi.mcdi.online/api/weights');
       setWeightsList(weightRes.data);
     } catch (err) {
       console.error("Error fetching data:", err);
@@ -68,7 +68,7 @@ export default function Weights() {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/weights', {
+      await axios.post('https://teaapi.mcdi.online/api/weights', {
         supplier_id: selectedSupplier,
         weight_kg: grossWeight,
         deduction_kg: deduction || 0,

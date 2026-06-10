@@ -12,7 +12,7 @@ export default function Reports() {
   const fetchMonthlyReport = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/reports/monthly/${targetMonth}`);
+      const res = await axios.get(`https://teaapi.mcdi.online/api/reports/monthly/${targetMonth}`);
       setReportData(res.data.data);
       setMarketRate(res.data.rate_per_kg);
     } catch (err) {

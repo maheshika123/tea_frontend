@@ -24,10 +24,10 @@ export default function FactoryManagement() {
 
   const fetchFactoryData = async () => {
     try {
-      const historyRes = await axios.get('http://localhost:5000/api/factory-sales');
+      const historyRes = await axios.get('https://teaapi.mcdi.online/api/factory-sales');
       setSalesHistory(historyRes.data);
 
-      const summaryRes = await axios.get(`http://localhost:5000/api/reports/commission/${targetMonth}`);
+      const summaryRes = await axios.get(`https://teaapi.mcdi.online/api/reports/commission/${targetMonth}`);
       setProfitSummary(summaryRes.data);
     } catch (err) {
       console.error("Error loading factory data:", err);
@@ -41,7 +41,7 @@ export default function FactoryManagement() {
   const handleSaleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/factory-sales', {
+      await axios.post('https://teaapi.mcdi.online/api/factory-sales', {
         factory_name: factoryName,
         supplied_month: targetMonth,
         total_delivered_kg: deliveredKg,

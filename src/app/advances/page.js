@@ -41,14 +41,14 @@ export default function Advances() {
 
   const fetchData = async () => {
     try {
-      const supRes = await axios.get('http://localhost:5000/api/suppliers');
+      const supRes = await axios.get('https://teaapi.mcdi.online/api/suppliers');
       setSuppliers(supRes.data);
       
-      const advRes = await axios.get('http://localhost:5000/api/advances');
+      const advRes = await axios.get('https://teaapi.mcdi.online/api/advances');
       setAdvanceList(advRes.data);
 
       // Load active month rate
-      const rateRes = await axios.get(`http://localhost:5000/api/rates/${rateMonth}`);
+      const rateRes = await axios.get(`https://teaapi.mcdi.online/api/rates/${rateMonth}`);
       setTeaRate(rateRes.data.rate_per_kg || '');
     } catch (err) {
       console.error("Error loading data:", err);
@@ -63,7 +63,7 @@ export default function Advances() {
   const handleRateSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/rates', { rate_month: rateMonth, rate_per_kg: teaRate });
+      await axios.post('https://teaapi.mcdi.online/api/rates', { rate_month: rateMonth, rate_per_kg: teaRate });
       setRateSuccess(true);
       setTimeout(() => setRateSuccess(false), 3000);
     } catch (err) {
@@ -78,7 +78,7 @@ export default function Advances() {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/advances', {
+      await axios.post('https://teaapi.mcdi.online/api/advances', {
         supplier_id: selectedSupplier,
         amount: amount,
         description: description,
